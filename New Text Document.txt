@@ -1,0 +1,52 @@
+@startuml
+entity Dosen {
+    *NIDN: bigint
+    --
+    nama_dosen: varchar
+    id_prodi: bigint <<FK>>
+    email: varchar
+    nomor_ponsel: varchar
+}
+
+entity Mahasiswa {
+    *NIM: bigint
+    --
+    nama_mahasiswa: varchar
+    id_prodi: bigint <<FK>>
+    email: varchar
+    nomor_ponsel: varchar
+    tahun_masuk: int
+}
+
+entity Jurusan {
+    *id_jurusan: bigint <<generated>>
+    --    
+    nama_jurusan: varchar
+}
+
+entity Prodi {
+    *id_prodi: bigint <<generated>>
+    --
+    nama_prodi: varchar
+    id_jurusan: bigint <<FK>>
+}
+
+entity Bimbingan {
+    *id_bimbingan: bigint <<generated>>
+    --
+    NIM: bigint <<FK>>
+    NIDN: bigint <<FK>>
+    waktu: date
+    keterangan: text
+    status: boolean
+    acc: boolean
+}
+
+
+
+Dosen |o--|| Prodi
+Mahasiswa |o--|| Prodi
+Prodi |o--o{ Jurusan
+Dosen |o--o{ Bimbingan
+Mahasiswa |o--o{ Bimbingan
+@enduml
