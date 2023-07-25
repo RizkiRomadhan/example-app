@@ -41,8 +41,8 @@
                                                 <th scope="row">{{ $loop->iteration }}</th>
                                                 <td>{{ $data->nama_mahasiswa }}</td>
                                                 <td>{{ $data->nim }}</td>
-                                                <td>{{ $data->dosen1->nama_dosen }}</td>
-                                                <td>{{ $data->dosen2->nama_dosen }}</td>
+                                                <td>{{ $data->dosen1->nama_dosen ?? '' }}</td>
+                                                <td>{{ $data->dosen2->nama_dosen ?? '' }}</td>
                                                 <td>{{ $data->status }}</td>
                                             </tr>
                                         @empty

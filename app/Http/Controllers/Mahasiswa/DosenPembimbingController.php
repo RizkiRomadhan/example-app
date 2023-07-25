@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Mahasiswa;
 
-use App\Http\Controllers\Controller;
+use App\Models\Dosen;
 use App\Models\Judul;
-use App\Models\Mahasiswa;
 use App\Models\Seminar;
+use App\Models\Mahasiswa;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class DosenPembimbingController extends Controller
 {
@@ -18,8 +19,9 @@ class DosenPembimbingController extends Controller
     public function index()
     {
         $judul = Judul::orderBy('created_at')->get();
+        $dosen = Dosen::all();
         
-        return view('mahasiswa.dosen-pembimbing.index', compact('judul'));
+        return view('mahasiswa.dosen-pembimbing.index', compact('judul', 'dosen'));
     }
 
     /**
